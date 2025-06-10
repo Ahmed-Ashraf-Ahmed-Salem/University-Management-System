@@ -3,6 +3,7 @@ package com.example.demo.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,6 +18,8 @@ import com.example.demo.service.StudentService;
 
 import jakarta.validation.Valid;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/student")
 public class StudentController {
@@ -24,9 +27,15 @@ public class StudentController {
     @Autowired
     private StudentService studentService;
 
-    @PostMapping
+    @PostMapping("/students")
     public Student createStudent(@Valid @RequestBody Student student){
+
         return studentService.save(student);
+    }
+
+    @PostMapping
+    public ResponseEntity<?> createAll (@RequestBody List<Student> students){
+        return studentService.saveAll(students);
     }
 
     @GetMapping
