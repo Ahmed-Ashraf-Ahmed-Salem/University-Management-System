@@ -27,13 +27,13 @@ public class StudentController {
     @Autowired
     private StudentService studentService;
 
-    @PostMapping("/students")
+    @PostMapping("/addStudent")
     public Student createStudent(@Valid @RequestBody Student student){
 
         return studentService.save(student);
     }
 
-    @PostMapping
+    @PostMapping("/addStudents")
     public ResponseEntity<?> createAll (@RequestBody List<Student> students){
         return studentService.saveAll(students);
     }
