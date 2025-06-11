@@ -3,9 +3,11 @@ package com.example.demo.service;
 import com.example.demo.entity.Grade;
 import com.example.demo.repository.GradeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class GradeServiceImpl implements GradeService{
 
     @Autowired
