@@ -33,41 +33,11 @@ public class Student {
     @Min(value = 10, message = "Age must be at least 10")
     private int age;
 
+    @ManyToOne
+    @JoinColumn(name = "department_id")
+    private Department department;
+
     @OneToMany(mappedBy = "student", cascade = CascadeType.ALL)
     private List<Enrollment> enrollments;
-
-
-    public long getId() {
-        return this.id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return this.name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getEmail() {
-        return this.email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public int getAge() {
-        return this.age;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
-    }
-
 
 }
